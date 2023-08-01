@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\API\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+//barang
+Route::apiResource('/barang', App\Http\Controllers\API\BarangController::class);
+Route::apiResource('/jenis-barang', App\Http\Controllers\API\JenisBarangController::class);
+Route::get('/transaksi/filtering',[TransaksiController::class, 'filtering']);
+Route::apiResource('/transaksi',App\Http\Controllers\API\TransaksiController::class);
+
+
